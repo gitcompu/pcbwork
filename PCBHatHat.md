@@ -6,8 +6,9 @@
   3) SW-PD4 (@ Top Middle) - Routes pin PD4 of Mega 328 to CD4@MEGA-3DIGI-5V or Joystick or DHT11 (temperature sensor 1-wire proto)
   4) SW-HALL (@ Bottom Right) - Routes pin PA0 of Mega 328 to CA3@328-2A1D-5V or HALL Analog Sensor A1302 (Magnet sensor)
   5) SW-IR-RECV (@ Bottom right)- Routes pin PD5 of Mega 328 to CD5@MEGA-3DIGI-5V or TSOP-4838 (3-pin IR Receiver IC for remote)
-  6) PB0-GP1 (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5 
-  7) PB1-GP2 (@ Top Middle) - Connects PB1 Mega 328 pin to either 5G2 or 5G7
+  6) SW-LM35Z (@ Top Right) - Connect Mega 328 pin A0 to either connector pin CA2 or to LM35Z Analog temperature sensor.
+  7) PB0-GP1 (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5 
+  8) PB1-GP2 (@ Top Middle) - Connects PB1 Mega 328 pin to either 5G2 or 5G7
   
 
 ### Do not power on board unless you have
@@ -45,5 +46,8 @@
   12) Similarly Rx/Tx are also straight conncted to the connector pin (connector RX-TX @ Middle Right) with no control by any jumper (note that even FTDI connector also use same pins so do not use FTDI and RX-TX connector at same time - ubnless you know exactly what you are doing).
   13) Mega 328 pins INT0 and INT1 are exposed via connector INTR-IN (@ Right Middle) - you can use them as INT pins or normal I/O pins depending on your program.
   14) Connector PROG328 (as well PROG328-2 both @ Right Middle) expose MISO, MOSI, SCK and RST pin so that you can use Arduino as ISP to load code into Mega 328 (if Mega 328 already conntains a bootloader then even FTDI pin is enough to program via Tx/Rx pins).
+
+### Operating board at 3.3V
+  - Note that its possible to make this board work at 3.3 V as well (choose EXT power then supply 3.3. V at the EXT Supply) but problem is that LM1117 low dropout regulator may not fucntion well and not able to generate 3.3 V. In such situation you have to set 3.3 V jumper to PI. But most of the sensors on board require 5V supply so this may not work in practice. But all the sensors (except Joystick whose output directly connected to Mega pin A2/A3) are connected to Mega 328 via jumpers. So if you operate board on 3.3. volt do not route any sensor pins to Mega 328 via jumpers and do not connect JoyStick as well. At the same time do not use FTDI or Arduino as ISP at all . SO under these strict condition you can operate board at 3.3V.
   
   
