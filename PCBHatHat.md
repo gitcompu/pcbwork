@@ -13,6 +13,10 @@
   - **SHTKY** are Schotteky Diodes
   - Things starting with **R** are mostly Resistors
   - Things starting with **C** are mostly Capacitors
+### LEDs
+  - **5VIND** (@ Middle Left) - will be lit in presense of 5V supply. (does not show LED sybmol, just a two pin header - so you can choose to extend sable to same panel).
+  - **3VIND** (@ Bottom Left) - will be lit in presense of 3.3V supply. (does not show LED sybmol, just a two pin header - so you can choose to extend sable to same panel).
+  - **LEDOE** - (Middle Left) Will be lit of TXB0104 BiDir connection is enabled (OE pin) (Works only in presense of RPUD). The OE is driven by G6. 
   
 
 ### Jumpers
@@ -25,8 +29,9 @@ Jumpers make the board highly configurable providing you more choice and control
   6) **SW-LM35Z** (@ Top Right) - Connect Mega 328 pin PC0 (A0) to either connector pin CA2 or to LM35Z Analog temperature sensor.
   7) **PB0-GP1** (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5
   8) **PB1-GP2** (@ Top Middle) - Connects PB1 Mega 328 pin to either 5G2 or 5G7
-  9) **RGB8_PI_TINY** - Route with PB2 of (Mega 328) or 5G1 to Data input of the circular RGB LED strip
-In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z temperature or Magnet Hall respectively) or to the connector 328-2A1D-5V. Similarly PD4 connect either to DHT11or to Joystick or to connector MEGA-3DIGI-5V. While PD5 connect either to TSOP-4838 (IR Recv IC) or to connector MEGA-3DIGI-5V.
+  9) **RGB8_PI_TINY** - Route with PB2 of (Mega 328) or 5G1 to Data input of the circular RGB LED strip.
+  
+In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z temperature or Magnet Hall respectively) or to the connector 328-2A1D-5V. Similarly PD4 connect either to DHT11 or to Joystick or to connector MEGA-3DIGI-5V. While PD5 connect either to TSOP-4838 (IR Recv IC) or to connector MEGA-3DIGI-5V.
 
 ### Do not power on board unless you have
   1) Choosen right 5 V supply either from RPi or Ext or FTDI  by jumper PWR-SW-5V (@ Left Bottom)
@@ -91,4 +96,4 @@ In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z tem
   
 ### Components
   - LM1117 3.3V Voltage regulator to be used is of 5V to 3.3V version (not adjustable voltage output) . Part number is LM1117T-3.3 (Tayda A-682) . This is fixed volatge output version.
-  - 
+  - **RPUD** - The OE pin of TXB0104 is pulled up internally by a 10K resistor (part of breakout board). That means the 3V to 5V conversion is enabled by default (if the G6 pin of RPi is in disabled tri state or input). We rather want this to be other way round (teh connection disabled and only enabled by default). So by conneting a 2K RPUD (pull down) resistor the voltage at OE will be 2/(2+10) or 1/6 of 3.3 V which is 0.55 which willbe trated as logic low . But flip side is that when you RPi pin will have to supply 3.3/2K=1.5 mA when set high.
