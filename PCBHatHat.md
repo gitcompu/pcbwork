@@ -5,13 +5,13 @@
   - All jumpers have **SW** in their name (stand for Swich) - except PB0-GP1 , PB2-GP2 and RGB8_PI_TINY.
   - **+3** means 3.3 V
   - **+5** means +5V
-  - Just a **+**  means wither a 5V or 3.3V or some other positive boltage (more often it stands for +5V)
+  - Just  **+**  means either a 5V or 3.3V or some other positive voltage (more often it stands for +5V)
   - **G** as well as **GND** means ground.
   - **~** char means its a Analog signal
-  - **DA** and **DL** stands for SDA and SDL signal respectively (any number prefix is voltage level of the signal e.g. 5DA means 5V SDA signal).
+  - **DA** and **DL** stands for SDA and SDL I2C signal respectively (any number suffix/prefix is voltage level of the signal e.g. DA5 means 5V SDA signal).
   - **G1**, **G2** ... **G7** stands for the GPIO pins from RPi (depending upon which header among J1, J2 or J3 you connect the board). Any number prefix tells the volateg level (e.g. 5G3 is 5V level G3 signal).
   - **SHTKY** are Schotteky Diodes
-  - Things stanrting with **R** are mostly Resistors
+  - Things starting with **R** are mostly Resistors
   - Things starting with **C** are mostly Capacitors
   
 
