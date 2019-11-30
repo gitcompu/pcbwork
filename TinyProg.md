@@ -31,7 +31,7 @@ Connector **RX-TX** Mid Left exposes Tx/Rx pin of Mega 328 while TX-RX2 exposes 
 SPI pins (MISO, MOSI, SCK) are exposed on headers with name H-<Chip>  e.g. H-TINY84 exposes SPI pins of Tiny 84 chip.
   
 ## Power
-Board power source can be chosen by Jumper **SW-PWR** (middle of the board) to either power comign thru SPI connectors or from a JST header (Top Right). Please note that the 5V lines of all the H-<Chip> connectors (i.e.e PSI connectors) are interconnected. So if you use two ISP programmer at the same time,  connect 5V only from one of the Arduino ISP programmer.
+Board power source can be chosen by Jumper **SW-PWR** (middle of the board) to either power comign thru SPI connectors or from a JST header (Top Right). Please note that the 5V lines of all the H-&lt;Chip&gt; connectors (i.e.e PSI connectors) are interconnected. So if you use two ISP programmer at the same time,  connect 5V only from one of the Arduino ISP programmer.
   
 
 
