@@ -35,7 +35,7 @@ In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z tem
 ### Safe Power Settings 
   - when board connected to RPi via 14 pin header (@ Top Left)
      1) Both PWR-SW-5V and SW-3VPWR set to PI - Current drawn from both 3.3.V and 5V of Pi for respective circuitry
-     2) PWR-SW-5V to PI and SW-3VPWR set to LM - Board draws all power from 5V supply of Pi (NOte that LM1117 does not have Capcacitors at its input and output - so its supply may contain ripples and may effect the RPi - so use with caution)
+     2) PWR-SW-5V to PI and SW-3VPWR set to LM - Board draws all power from 5V supply of Pi (Note that LM1117 does not have Capcacitors on the input side - assuming path to RPi is so short that capcaitor on RPi side will be suffice)
 
   - when board NOT connected to RPi 
      1) SW-3VPWR set to LM and PWR-SW-5V to either FTDI or EXT (depending upon where 5V supply is coming from)
