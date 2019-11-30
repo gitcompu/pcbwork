@@ -1,5 +1,12 @@
 ## RaspBerry Pi Hat's Hat 
 
+### Conventions
+All jumpers have SW in their name (stand for Swich) - except PB0-GP1 and PB2-GP2.
++3 meaans 3.3 V
++5 means +5V
+Just a +  means wither a %V or 3.3V or some other positive boltage (most often it is +5V)
+*G* as well as *GND* means ground.
+
 ### Jumpers
 Jumpers make the board highly configurable providing you more choice and control over Singal routing and Power supply.
   1) PWR-SW-5V (@ Left Bottom) - Choose 5V power supply source between 5V-RPi or EXT or FTDI
@@ -8,7 +15,7 @@ Jumpers make the board highly configurable providing you more choice and control
   4) SW-HALL (@ Bottom Right) - Routes pin PC1 (A1) of Mega 328 to CA3@328-2A1D-5V or HALL Analog Sensor A1302 (Magnet sensor)
   5) SW-IR-RECV (@ Bottom right)- Routes pin PD5 of Mega 328 to CD5@MEGA-3DIGI-5V or TSOP-4838 (3-pin IR Receiver IC for remote)
   6) SW-LM35Z (@ Top Right) - Connect Mega 328 pin PC0 (A0) to either connector pin CA2 or to LM35Z Analog temperature sensor.
-  7) PB0-GP1 (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5 
+  7) PB0-GP1 (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5
   8) PB1-GP2 (@ Top Middle) - Connects PB1 Mega 328 pin to either 5G2 or 5G7
   9) RGB8_PI_TINY - Route with PB2 of (Mega 328) or 5G1 to Data input of the circular RGB LED strip
 In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z temperature or Magnet Hall respectively) or to the connector 328-2A1D-5V. Similarly PD4 connect either to DHT11or to Joystick or to connector MEGA-3DIGI-5V. While PD5 connect either to TSOP-4838 (IR Recv IC) or to connector MEGA-3DIGI-5V.
@@ -40,7 +47,7 @@ In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z tem
   - MEGA-3DIGI-5V - Exposes Mega 328 pins PD4 (T0/XCK) , PD5 (T1/OC0B) (both subject to jumper setting) and PD7 (AIN1) alongwith 5V and GND
   - RX-TX - Exposes Tx and Rx pin of Mega 328 (with 5V and GND)
   - FTDI - Meant to be used with FTDI breakout for booloader loaded Mega 328 but can be used for other purpose as it exposes Mega 328 RESET (subject to jumper) , Tx and Rx pin alongwith GND. It expects 5V supply to come from outside which can be routed to 5V supply of the board with jumper PWR-SW-5V set to FTDI side.
-  - PROG328 and PROG328-2 - Exposes MISO, MOSI, SCK and RESET pin of Mega 328 to be programmed by Arduino as ISP
+  - PROG328 and PROG328-2 - Exposes PB3 (MOSI/OC2A), PB4 (MISO) , PB5 (SCK) and PD0 (RESET) pin of Mega 328 with intention to be programmed by Arduino as ISP (though you can simply see it as exposre of these pins on a connector) alongwith 5V and GND.
   
 ### Important
   - When you have inserted TXB0104 and I2C BiDir breakouts in the provided slots 
