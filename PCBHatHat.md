@@ -10,6 +10,9 @@
   - **~** char means its a Analog signal
   - **DA** and **DL** stands for SDA and SDL signal respectively (any number prefix is voltage level of the signal e.g. 5DA means 5V SDA signal).
   - **G1**, **G2** ... **G7** stands for the GPIO pins from RPi (depending upon which header among J1, J2 or J3 you connect the board). Any number prefix tells the volateg level (e.g. 5G3 is 5V level G3 signal).
+  - **SHTKY** are Schotteky Diodes
+  - Things stanrting with **R** are mostly Resistors
+  - Things starting with **C** are mostly Capacitors
   
 
 ### Jumpers
