@@ -1,15 +1,16 @@
 ## RaspBerry Pi Hat's Hat 
 
 ### Conventions
-All jumpers have **SW** in their name (stand for Swich) - except PB0-GP1 , PB2-GP2 and RGB8_PI_TINY.
-
-**+3** means 3.3 V
-
-**+5** means +5V
-
-Just a **+**  means wither a 5V or 3.3V or some other positive boltage (more often it stands for +5V)
-
-**G** as well as **GND** means ground.
+  - **RPi** stands for Raspberry Pi
+  - All jumpers have **SW** in their name (stand for Swich) - except PB0-GP1 , PB2-GP2 and RGB8_PI_TINY.
+  - **+3** means 3.3 V
+  - **+5** means +5V
+  - Just a **+**  means wither a 5V or 3.3V or some other positive boltage (more often it stands for +5V)
+  - **G** as well as **GND** means ground.
+  - **~** char means its a Analog signal
+  - **DA** and **DL** stands for SDA and SDL signal respectively (any number prefix is voltage level of the signal e.g. 5DA means 5V SDA signal).
+  - **G1**, **G2** ... **G7** stands for the GPIO pins from RPi (depending upon which header among J1, J2 or J3 you connect the board). Any number prefix tells the volateg level (e.g. 5G3 is 5V level G3 signal).
+  
 
 ### Jumpers
 Jumpers make the board highly configurable providing you more choice and control over Singal routing and Power supply.
@@ -85,4 +86,6 @@ In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z tem
     4) Do not use FTDI or Arduino as ISP at all when operating board at 3 V.
     5) You cannot use 16 MHz external crystal (and have to opt for internal 8 MHz clock).
   
-  
+### Components
+  - LM1117 3.3V Voltage regulator to be used is of 5V to 3.3V version (not adjustable voltage output) . Part number is LM1117T-3.3 (Tayda A-682) . This is fixed volatge output version.
+  - 
