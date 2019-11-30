@@ -4,18 +4,18 @@
 Jumpers make the board highly configurable providing you more choice and control over Singal routing and Power supply.
   1) PWR-SW-5V (@ Left Bottom) - Choose 5V power supply source between 5V-RPi or EXT or FTDI
   2) SW-3VPWR  (@ Left  Top)   - Choose 3.3V supply source between Pi or LM1117 regu (LM1117 sources from 5V)
-  3) SW-PD4 (@ Top Middle) - Routes pin PD4 of Mega 328 to CD4@MEGA-3DIGI-5V or Joystick or DHT11 (temperature sensor 1-wire proto)
-  4) SW-HALL (@ Bottom Right) - Routes pin PA0 of Mega 328 to CA3@328-2A1D-5V or HALL Analog Sensor A1302 (Magnet sensor)
+  3) SW-PD4 (@ Top Middle) - Routes pin PD4 (T0/XCK) of Mega 328 to CD4@MEGA-3DIGI-5V or Joystick or DHT11 (Temperature/Humidity sensor 1-wire proto)
+  4) SW-HALL (@ Bottom Right) - Routes pin PC1 (A1) of Mega 328 to CA3@328-2A1D-5V or HALL Analog Sensor A1302 (Magnet sensor)
   5) SW-IR-RECV (@ Bottom right)- Routes pin PD5 of Mega 328 to CD5@MEGA-3DIGI-5V or TSOP-4838 (3-pin IR Receiver IC for remote)
-  6) SW-LM35Z (@ Top Right) - Connect Mega 328 pin A0 to either connector pin CA2 or to LM35Z Analog temperature sensor.
+  6) SW-LM35Z (@ Top Right) - Connect Mega 328 pin PC0 (A0) to either connector pin CA2 or to LM35Z Analog temperature sensor.
   7) PB0-GP1 (@ Top Middle) - Connects PB0 Mega 328 pin to either 5G1 or 5G5 
   8) PB1-GP2 (@ Top Middle) - Connects PB1 Mega 328 pin to either 5G2 or 5G7
   9) RGB8_PI_TINY - Route with PB2 of (Mega 328) or 5G1 to Data input of the circular RGB LED strip
-  
+In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z temperature or Magnet Hall respectively) or to the connector 328-2A1D-5V. Similarly PD4 connect either to DHT11or to Joystick or to connector MEGA-3DIGI-5V. While PD5 connect either to TSOP-4838 (IR Recv IC) or to connector MEGA-3DIGI-5V.
 
 ### Do not power on board unless you have
-  1) Choose right 5 V supply either from RPi or Ext or FTDI  by jumper PWR-SW-5V (@ Left Bottom)
-  2) Choose right 3 V supply either from RPi or LM1117 regu  by SW-3VPWR (@ Left  Top)
+  1) Choosen right 5 V supply either from RPi or Ext or FTDI  by jumper PWR-SW-5V (@ Left Bottom)
+  2) Choosen right 3 V supply either from RPi or LM1117 regu  by SW-3VPWR (@ Left  Top)
 
 ### Safe Power Settings 
   - when board connected to RPi via 14 pin header (@ Top Left)
@@ -26,7 +26,7 @@ Jumpers make the board highly configurable providing you more choice and control
      1) SW-3VPWR set to LM and PWR-SW-5V to either FTDI or EXT (depending upon where 5V supply is coming from)
 
 ### Connectors
-  - 14 pin header connects to RPiHat (one of the 3) or any other such board providing such header. Pins G1 to G7 are 7 GPIO pins from RPi routed (depending upon which connector you connect to). These are 3V in nature and 4 of them (G1 to G4) are routed to TXB0104 while 2 (G5 and G7) are routed to I2C BiDir for conversion to 5V (so 3G1 means 3V side of G1 while 5G1 means 5V side of the same signal). Pin G6 is connected to OE pin of TXB0104 (so putting LOW on this pin makes TXB0104 to go into Tri State thus disabling the 3 V to 5 V conversion of signals - important protection feature).
+  - 14 pin header connects to RPiHat (one of the 3) or any other such board providing such header. Pins G1 to G7 are 7 GPIO pins from RPi routed (depending upon which connector you connect to). These are 3V in nature . Among them four (G1 to G4) are routed to TXB0104 while rwo (G5 and G7) are routed to I2C BiDir - both routing for conversion of 3V singnal to 5V (so e.g. 3G1 means 3V side of G1 while 5G1 means 5V side of the same signal). Pin G6 is connected to OE pin of TXB0104 (so putting OE as LOW makes TXB0104 to go into Tri State thus disabling the 3 V to 5 V conversion of signals - important protection feature - no such protection for I2C BiDir convertor as its just 4 MOSFET slapped with some resistors - not an IC - see Adafruit side for link to principalbehind the operation).
 #### RPi and Mega 328 related
   - GPIO-3V-2 - Exposes  3V side  of G1 to G4 (alongwith 3V supply and GND) 
   - GPIO-5V-2 - Exposes  5V side of G1 to G4 (alongwith 5V supply and GND)
@@ -35,9 +35,9 @@ Jumpers make the board highly configurable providing you more choice and control
   - 5V-I2C/SPI-1 - Exposes 5V side of I2C (i.e SDA/SDL) , G5 and G7 (alongwith 5V supply and GND) (for expansion)
   - 5V-I2C/SPI-2 - Exposes 5V side of I2C (i.e SDA/SDL) , G5 and G7 (alongwith 5V supply and GND) (for expansion)
 #### Mega 328 only
-  - INTR-IN - Exposes Mega 328 INT0 and INT1 alongwith 5V and GND
-  - 328-2A1D-5V - Exposes Mega 328 two Analog pins (PA2,PA3 - subject to jumper setting) and one Digital pin PD7 alongwith 5V and GND
-  - MEGA-3DIGI-5V -
+  - INTR-IN - Exposes Mega 328 PD2 (INT0) and PD3 (INT1/OC2B) alongwith 5V and GND
+  - 328-2A1D-5V - Exposes Mega 328 two Analog pins PC2 (A2), PC3(A3) (both subject to jumper setting) and one Digital pin PD7 alongwith 5V and GND
+  - MEGA-3DIGI-5V - Exposes Mega 328 pins PD4 (T0/XCK) , PD5 (T1/OC0B) (both subject to jumper setting) and PD7 (AIN1) alongwith 5V and GND
   - RX-TX - Exposes Tx and Rx pin of Mega 328 (with 5V and GND)
   - FTDI - Meant to be used with FTDI breakout for booloader loaded Mega 328 but can be used for other purpose as it exposes Mega 328 RESET (subject to jumper) , Tx and Rx pin alongwith GND. It expects 5V supply to come from outside which can be routed to 5V supply of the board with jumper PWR-SW-5V set to FTDI side.
   - PROG328 and PROG328-2 - Exposes MISO, MOSI, SCK and RESET pin of Mega 328 to be programmed by Arduino as ISP
