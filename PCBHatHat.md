@@ -95,5 +95,19 @@ In simple words Mega 328's A0 and A1 either connect to Analog sensors (LM35Z tem
     5) You cannot use 16 MHz external crystal (and have to opt for internal 8 MHz clock).
   
 ### Components
-  - LM1117 3.3V Voltage regulator to be used is of 5V to 3.3V version (not adjustable voltage output) . Part number is LM1117T-3.3 (Tayda A-682) . This is fixed volatge output version.
-  - **RPUD** - The OE pin of TXB0104 is pulled up internally by a 10K resistor (part of breakout board). That means the 3V to 5V conversion is enabled by default (if the G6 pin of RPi is in disabled tri state or input). We rather want this to be other way round (teh connection disabled and only enabled by default). So by conneting a 2K RPUD (pull down) resistor the voltage at OE will be 2/(2+10) or 1/6 of 3.3 V which is 0.55 which willbe trated as logic low . But flip side is that when you RPi pin will have to supply 3.3/2K=1.5 mA when set high.
+  - **Atmel Mega 328** 28 pin 8 bit microcontroller with 32K of EPROM (for code) and 8K of SRAM (pinouts - atmega328v3_0.pdf and manual Atmega328_48_88_168.pdf ).
+  - **LM1117 3.3V Voltage regulator** to be used is of 5V to 3.3V version (not adjustable voltage output) . Part number is LM1117T-3.3 (Tayda A-682) . This is fixed volatge output version. This is optional component if you choose to get the 3.3V alaways from RPi (using proper jumper) but when using board without RPi the 3.3V line will be dead (so you have to take out the TXB0104 and I2C BiDir breakout boards to protect them). So kinda advisable to install this.
+  - **RPUD** - Mandatory 2K component. The OE pin of TXB0104 is pulled up internally by a 10K resistor (part of breakout board). That means the 3V to 5V conversion is enabled by default (if the G6 pin of RPi is in disabled tri state or input). We rather want this to be other way round (teh connection disabled and only enabled by default). So by conneting a 2K RPUD (pull down) resistor the voltage at OE will be 2/(2+10) or 1/6 of 3.3 V which is 0.55 which willbe trated as logic low . But flip side is that when you RPi pin will have to supply 3.3/2K=1.5 mA when set high.
+  - **C3V, C5V, C5V2** - Electrolytic Capcaitors of 10uF to improve electrical stability of the board.
+  - **R5V, R3V** - series resistor for LEDs 3VIND and 5VIND.
+  - **DHT11** (@ Top Right) - Temperature and Humidity sensor (Digital 1-wire interface)
+  - **LM35DZ** (@ Top Right)- Analog temperature monitor
+  - **TSOP-4838** (@ Bottom Right) - Infrared Detector IC for InfraRed remotes (Digital interface)
+  - **A1302**  (@ Bottom Right) - Magnetic sensor (based on Hall Effect)
+  - **LCD-RPI1** (@ Bottom Left) - Connector to Nokia 5110 LCD (with holes mounting screws)
+  - **LLED1** - This is  not a LED but just a jumper to enable Intensity control of backlighting of LCD (if  shorted then inetensity if controlled by potentimeter POT1 otherwise the backlight is at full brigtness alaways). You can though also put a LED here (in proper orientation) but apart from glowing at constant inetensity (may not even glow if POT1 is of high resistance) not serve any purpose. 
+  - **POT1** - Controls intensity of Nokia 5110 LCD (works only if LLED1 jumper is set - see above)
+  - **XT** - 2 pin Crystal (like 16MHz , 8MHz etc). Requires C84-4 and C328-2 few pico farad capacitor to be installed alongwith (to reduce noise/ringing). This is optional if you are ok using internal 8MHz clock of Mega 328 (that way these two pin become free to use as normal I/O pins).
+  
+  - **SHTKY** Schotteky diode
+  
