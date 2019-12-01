@@ -1,13 +1,24 @@
 # MCP23017 I/O expander board
 This board desined to act as I/O expander for uPs. The concept is simple. The MCP23017 receives instructions 
 from uP over I2C line and has got two 8 bit register that map to two 8-bit port pins. The ports can either act as 
-either Output or Input. The board is desined so that it can work
-  - **Expand-1** - As RPi HatHat and cane be connected to RPi with 14 pin header **PIHAT-HEADER1** . This this mode the whoel board is working at 3.3 V.
+either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports.
+
+## Usage
+The board is desined so that it can work
+  - **Expand-1** - As RPiHatHat bboard that can be connected to RPiHat with 14 pin header **PIHAT-HEADER1** to any of J1, J2 or J3 connectors of RPiHat. This this mode the whoel board is working at 3.3 V.
   - **Expand-2** - Board's header **5V/3V I2C** plugins into RPiHatHat header **3V-I2C/SPI-1** or **3V-I2C/SPI-2**  (Board operates at 3.3 V)
-  - **Expand-3** - Board's header **5V/3V I2C** plugins into RPiHatHat header **5V-I2C/SPI-1** or **5V-I2C/SPI-2**  (Board operates at 3.3 V)
+  - **Expand-3** - Board's header **5V/3V I2C** plugins into RPiHatHat header **5V-I2C/SPI-1** or **5V-I2C/SPI-2**  (Board operates at 5 V)
   - **Expand-4** - As a I/O expander for any uC that comes with I2C signal (that can be connected to header **5V/3V I2C** ) ( Board operates at volatge supplied by the connector).
 
-The two 8 bit ports drives 16 LED . However the ground connection for the LED resistors is open by default (so LED do not work unless you close the Jumpers LEDA-GND and LEDB-GND). The two 8 bit ports are also exposed on two connetors GAH and GBH. Since these ports are connected to the IC pins via LEDs , they can accept input voltage of more than 3.3 V (reverse biasing the LEDs). So these  ports are 5V tolerant (even though th eboard is a 3.3V board). So to make the ports as input , set them for pull up mode (so that when extenal circuit put a high the LED do not conduct but pull up makes the port bit high).
+## Operation
+
+### LEDs
+The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default (so LED do not work unless you close the Jumpers LEDA-GND and LEDB-GND). By setting the 23017 port pins as output, you can blink all the possible LED you wanted to blink.
+
+## Headers GAH/GBH
+The two 8 bit ports are also exposed on two headers GAH and GBH. When the 23017 ports are set as input, since these headers are connected to the IC pins via LEDs , the headers can accept input voltage of more than 3.3 V (reverse biasing the LEDs - note that 23017 ports need to be in input mode with pull up option to work this way). So these  headers are 5V tolerant  when 23017 ports are set as input with pull up option (even when board is operating at 3.3V ). 
+
+Note that it can be risky to set the 23017 ports to Output when anything is connected at the headers GAH and GBH. Reason being if the connected external circuit also sets their port as output and 23017 pin is high while external circuit is low , it will damage any or both chips due to huge current flow (if you are sure what you are doign you can opt to set the ports to output).
 
 
 ## Features
