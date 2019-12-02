@@ -1,7 +1,8 @@
 # MCP23017 I/O expander board
 This board designed to act as I/O expander for uP. The concept is simple. The MCP23017 receives instructions 
 from uP over I2C line and has got two 8 bit register that map to two 8-bit port pins. The ports can either act as 
-either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports .
+either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports . Note that 23017 is a versatile chip with many features and this board is configured to use few of them.
+
 ## Caution
   - Never connect RPi header (14 pin - left side) as well as 3V/5V-I2C header (6 pin - right side) at the same time.
   - Never plugin Trinket M0 in the Trinket header when board is operating at 5V 
@@ -18,7 +19,7 @@ The board is desined so that it can work I/O expander for four different cases
 ## Operation
 
 ## Trinket M0 header
-The board provides a header to plug a Adafruit Trinket M0 (which is a SAM21D 32 bit 32K RAM 256K EPROM plus 2M flash whihc can run Circuit Python). The SDA/DSL of the Trinket M0 can be attached to main SDA/SDL via jumpers SW-TMSD/SW-TMSL. The Triket works at 3.3V level and expects the board to be running at 3.3V signal level , so its ok to plugin when board is connected to RPiHat (it draws power from 5V connector so does not require USB connection - you can connect USB if you want). 
+The board provides a 10 pin header to plug a Adafruit Trinket M0  (which is a SAM21D 32 bit 32K RAM 256K EPROM plus 2M flash and comes preloaded with Circuit Python). The SDA/DSL of the Trinket M0 can be attached to main SDA/SDL via jumpers SW-TMSD/SW-TMSL. The Triket works at 3.3V level and expects the board to be running at 3.3V signal level , so its ok to plugin when board is connected to RPiHat (it draws power from 5V connector so does not require USB connection - you can connect USB if you want). 
 
 When **5V/3V-I2C** header is connected, it is only safe to plug trinket the board only on two conditions
   - The Vcc of the header is at 3.3V and signals are also at 3.3C
@@ -27,12 +28,12 @@ When **5V/3V-I2C** header is connected, it is only safe to plug trinket the boar
 Never connect Trinket if **5V/3V-I2C** is connected and operating at 5V signals levels (maybe add a I2C bidireciton convertor to work around this limitation).
 
 ### LEDs
-The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default (so LED do not work unless you close the Jumpers LEDA-GND and LEDB-GND). By setting the 23017 port pins as output, you can blink all the possible LED you wanted to blink.
+The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default for Port B (so LED do not work unless you close the Jumpers LEDB-GND). By setting the 23017 B port pins as output, you can blink all the possible LED you wanted to blink. Regarding port A , all the eonnected LEDS series resistors' tail are routed to pins on header GAH (along with a GND pin). So if you short all the pins of the GBH (or selective pins are connected to ground), you can blink the port A connected LEDs.
 
 ## Headers GAH/GBH
 The two 8 bit ports (viz A and B) are also exposed on two headers GAH and GBH. 
   - **GAH Header** - This header is desinged to primarily work as output (with a protection series resistor - so that if its connected to a external circuit which also want to act as output - the resistor will limit the current). The LED protects if the chip is workgin at 3.3 V and some 5V stuff is applied at the header pin (though even resistor itself could protect - so you can even short the pins of LEDs and still the board will have protection). The board can also work as input but remember to set the port to hugh pullup.
-  - **GBH Header** - Primarily desiged to work as input (no series protection resistors - but the LED try to protect if chip is running at 3.3V and someone try to put 5V at the header pin). When setting as input port, remember to set the PullUp option on (so that if someone try to put 5V or 3.3 V at output when chip is running at 3.3 V thus reverse biasing the LED, the internal pull up resistor option will make the input read high). This will work even if chip is operating at 5 V and you try to connect a 3.3V as input on the header (but the header will require to sink current going from pull up resistor).
+  - **GBH Header** - Primarily desiged to work as input (no series protection resistors - but the LED try to protect if chip is running at 3.3V and someone try to put 5V at the header pin). When setting as input port, remember to set the PullUp option on (so that if someone try to put 5V or 3.3 V at output when chip is running at 3.3 V thus reverse biasing the LED, the internal pull up resistor option will make the input read high). This will work even if chip is operating at 5 V and you try to connect a 3.3V as input on the header (but the header will require to sink current going from pull up resistor). If you are not planngin to connect any external circuit to GBH header and plan to use it to blink LEDs , the LEDs won't work unless you close the jumper **LEDB-GND**.
  
 
 Note that it can be risky to set the 23017 B port (connected to header GBH) to Output when anything is connected at the headers GBH. Reason being if the connected external circuit also sets their port as output and 23017 pin is high while external circuit is low , it will damage any or both chips due to huge current flow (if you are sure what you are doign you can opt to set the B port to output).
