@@ -1,6 +1,6 @@
-# Raspberry Pi 4 Hat - faces PCB away from fan
+# Raspberry Pi 4 Hat - PCB extends away from fan 
 
-This header exposes most of the GPIO pins of the Raspberry Pi module in form of 3 14 pin headers (headers are in 2x7 format).
+This header exposes most of the GPIO pins of the Raspberry Pi module in form of three 14 pin headers (headers are in 2x7 format).
 Idea is that you develop more boards which get plugged into one of these headers.
 
   - **J1 header** - Exposes has only Tx/Rx (aka GPIO14/GPIO15) and MOSI/MISO/SCK (aka GPIO10/GPIO9/GPIO11) communication pins of RaspPi exposed (alongwith 4 SPIO pins 17,18,19,20).
