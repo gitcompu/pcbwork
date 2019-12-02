@@ -42,12 +42,12 @@ Note that it can be risky to set the 23017 B port (connected to header GBH) to O
 Provides RPi expanded I/O
 The Board operates on 3.3V (pulling supply from RPi Hat header).
 The two ports GAH and GBH headers exposes the two 8 bit ports of 23017.
-These two headers (GAH and GBH) are 5V tolerant (due to proteection from LEDs)
+These two headers (GAH and GBH) are 5V tolerant (due to protection from LEDs going reverse bias stopping current flow)
 
 
 So in a Nutshell
-  - Used as a LED blink mode (not connecting anything on headers GAH and GBH) , safe to put 23017 ports in output mode.
-  - When using the header GBH to connect to extetnal circuits, advisable to put the 23017 B port as INPUT mode with pullup.
-  - Header GAH has series resistors (alongwith a series LEDs) when connecting port A , so bit safe to put as output with rough circuits (though don't test limits).
+  - When board is used to just blink LEDs (not connecting anything on headers GAH and GBH) , safe to put both 23017 ports in output mode.
+  - When using the header GBH to connect to external circuits, advisable to put the 23017 B port as INPUT mode with pullup. Port A can be put in output mode in all cases.
+  - Header GAH has series resistors (alongwith a series LEDs) when connecting port A , so bit safe to put as output with external circuits (though don't test limits).
 
 
