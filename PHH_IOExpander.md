@@ -21,7 +21,7 @@ The two 8 bit ports (viz A and B) are also exposed on two headers GAH and GBH.
   - **GBH Header** - Primarily desiged to work as input (no series protection resistors - but the LED try to protect if chip is running at 3.3V and someone try to put 5V at the header pin). When setting as input port, remember to set the PullUp option on (so that if someone try to put 5V or 3.3 V at output when chip is running at 3.3 V thus reverse biasing the LED, the internal pull up resistor option will make the input read high). This will work even if chip is operating at 5 V and you try to connect a 3.3V as input on the header (but the header will require to sink current going from pull up resistor).
  
 
-Note that it can be risky to set the 23017 ports to Output when anything is connected at the headers GAH and GBH. Reason being if the connected external circuit also sets their port as output and 23017 pin is high while external circuit is low , it will damage any or both chips due to huge current flow (if you are sure what you are doign you can opt to set the ports to output).
+Note that it can be risky to set the 23017 B port (connected to header GBH) to Output when anything is connected at the headers GBH. Reason being if the connected external circuit also sets their port as output and 23017 pin is high while external circuit is low , it will damage any or both chips due to huge current flow (if you are sure what you are doign you can opt to set the B port to output).
 
 
 ## Features
@@ -31,11 +31,12 @@ The two ports GAH and GBH headers exposes the two 8 bit ports of 23017.
 These two headers (GAH and GBH) are 5V tolerant (due to proteection from LEDs)
 
 ## Cautions
-When using port GAH and GBH , do not set any of the 2 ports are output (as any externa circuit putting low on the 
-header pin will cause huge current to flow thru corresponding LED.
+When using header GBH , do not set the port as output (as any external circuit putting LOW on the 
+header pin , while B port pin is set to HIGH, will cause huge current to flow thru corresponding LED.
 
 So in a Nutshell
   - Used as a LED blink mode (not connecting anything on headers GAH and GBH) , safe to put 23017 ports in output mode.
-  - When using the header GAH and GBH to connect to extetnal circuits, advisable to put the 23017 ports as input mode with pullup.
+  - When using the header GBH to connect to extetnal circuits, advisable to put the 23017 B port as INPUT mode with pullup.
+  - Header GAH has series resistors (alongwith a series LEDs) when connecting port A , so bit safe to put as output with rough circuits (though don't test limits).
 
 
