@@ -2,6 +2,11 @@
 This board designed to act as I/O expander for uP. The concept is simple. The MCP23017 receives instructions 
 from uP over I2C line and has got two 8 bit register that map to two 8-bit port pins. The ports can either act as 
 either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports.
+## Caution
+  - Never connect RPi header (14 pin - left side) as well as 3V/5V-I2C header (6 pin - right side) at the same time.
+  - Never plugin Trinket M0 in the Trinket header when board is operating at 5V 
+  - Insert Trinket M0 header in right orientation (else it may damage the board as well as Trinket - see the legends on board showing the pins while inserting).
+  - When using GBH to connect external circuit, do not set the B port as output (as any external circuit putting LOW on the header pin , while B port pin is set to HIGH, will cause huge current to flow thru corresponding LED - damaging wither of two or both circuits).
 
 ## Usage
 The board is desined so that it can work I/O expander for four different cases
@@ -39,9 +44,6 @@ The Board operates on 3.3V (pulling supply from RPi Hat header).
 The two ports GAH and GBH headers exposes the two 8 bit ports of 23017.
 These two headers (GAH and GBH) are 5V tolerant (due to proteection from LEDs)
 
-## Cautions
-When using header GBH , do not set the port as output (as any external circuit putting LOW on the 
-header pin , while B port pin is set to HIGH, will cause huge current to flow thru corresponding LED.
 
 So in a Nutshell
   - Used as a LED blink mode (not connecting anything on headers GAH and GBH) , safe to put 23017 ports in output mode.
