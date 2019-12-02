@@ -1,7 +1,7 @@
 # MCP23017 I/O expander board
 This board designed to act as I/O expander for uP. The concept is simple. The MCP23017 receives instructions 
 from uP over I2C line and has got two 8 bit register that map to two 8-bit port pins. The ports can either act as 
-either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports.
+either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports .
 ## Caution
   - Never connect RPi header (14 pin - left side) as well as 3V/5V-I2C header (6 pin - right side) at the same time.
   - Never plugin Trinket M0 in the Trinket header when board is operating at 5V 
@@ -51,3 +51,10 @@ So in a Nutshell
   - Header GAH has series resistors (alongwith a series LEDs) when connecting port A , so bit safe to put as output with external circuits (though don't test limits).
 
 
+## I2C address
+There are 3 pins viz A0,A1,A2 using which you can use 8 different I2C addres son which the 23017 can be addresses.
+When all 3 pins are pulled low , the address is 0x20. With A0 pulled high , address is 0x21 .
+On the board all the 3 pins have been pulled high by a pull up resistors hence the I2C address of 23017 will be 0x27. But there are 3 jumpers viz GNDA0, GNDA1 and GNDA2 using which you can selectively pull these 3 pins down to configure the I2C address of 23017.
+
+## Interrupts
+When 23017 ports are set as INPUT you can configure them to generate interrupts on any logic status changes on any of the port pins. These pins on the board are left disconneted by default but can be routed to the 3V/5V-I2C connector via jumpers INTA and INTB.
