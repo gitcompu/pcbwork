@@ -3,7 +3,7 @@
 This header exposes most of the GPIO pins of the Raspberry Pi module in form of three 14 pin headers (headers are in 2x7 format).
 Idea is that you develop more boards which get plugged into one of these headers.
 
-  - **J1 header** - Exposes has only Tx/Rx (aka GPIO14/GPIO15) and MOSI/MISO/SCK (aka GPIO10/GPIO9/GPIO11) communication pins of RaspPi exposed (alongwith 4 SPIO pins 17,18,19,20).
+  - **J1 header** - Exposes only Tx/Rx (aka GPIO14/GPIO15) and MOSI/MISO/SCK (aka GPIO10/GPIO9/GPIO11) communication pins of RaspPi exposed (alongwith 4 GPIO pins 17,18,19,20).
   - **J2 header** - Exposes only I2C pins SDA/SDL (aka GPIO2/GPIO3) alongwith 7 GPIO pins 5,6,7,8,12,13,16
   - **J3 header** - Exposes only I2C pins (aka GPIO2/GPIO3) alongwith 7 GPIO pins 21,22,23,24,25,26,227
 
