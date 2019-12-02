@@ -1,16 +1,25 @@
 # MCP23017 I/O expander board
-This board desined to act as I/O expander for uPs. The concept is simple. The MCP23017 receives instructions 
+This board designed to act as I/O expander for uP. The concept is simple. The MCP23017 receives instructions 
 from uP over I2C line and has got two 8 bit register that map to two 8-bit port pins. The ports can either act as 
 either Output or Input. Chip MCP23017 is verstile whose ports in input mode can either be made pull up or pull down or none. At the same time it can be configured to generate interrupt on change in logic state or wither rising /falling edge of any of the ports.
 
 ## Usage
-The board is desined so that it can work
-  - **Expand-1** - As RPiHatHat bboard that can be connected to RPiHat with 14 pin header **PIHAT-HEADER1** to any of J1, J2 or J3 connectors of RPiHat. This this mode the whoel board is working at 3.3 V.
+The board is desined so that it can work I/O expander for four different cases
+  - **Expand-1** - As RPiHatHat board that can be connected to RPiHat with 14 pin header **PIHAT-HEADER1** to any of J1, J2 or J3 connectors of RPiHat. This this mode the whole board is working at 3.3 V (Amongst signal pins , only SDA, SDL , and G7 are used. No other signal pins used. 3V is used to power Vcc of board, 5V is conected to Triket M0 header as Vbat and G7 is connected to REST of Trinket M0)
   - **Expand-2** - Board's header **5V/3V I2C** plugins into RPiHatHat header **3V-I2C/SPI-1** or **3V-I2C/SPI-2**  (Board operates at 3.3 V)
   - **Expand-3** - Board's header **5V/3V I2C** plugins into RPiHatHat header **5V-I2C/SPI-1** or **5V-I2C/SPI-2**  (Board operates at 5 V)
   - **Expand-4** - As a I/O expander for any uC that comes with I2C signal (that can be connected to header **5V/3V I2C** ) ( Board operates at volatge supplied by the connector).
 
 ## Operation
+
+## Trinket M0 header
+The board provides a header to plug a Adafruit Trinket M0 (which is a SAM21D 32 bit 32K RAM 256K EPROM plus 2M flash whihc can run Circuit Python). The SDA/DSL of the Trinket M0 can be attached to main SDA/SDL via jumpers SW-TMSD/SW-TMSL. The Triket works at 3.3V level and expects the board to be running at 3.3V signal level , so its ok to plugin when board is connected to RPiHat (it draws power from 5V connector so does not require USB connection - you can connect USB if you want). 
+
+When **5V/3V-I2C** header is connected, it is only safe to plug trinket the board only on two conditions
+  - The Vcc of the header is at 3.3V and signals are also at 3.3C
+  - The Trinket M0 is powered from USB
+
+Never connect Trinket if **5V/3V-I2C** is connected and operating at 5V signals levels (maybe add a I2C bidireciton convertor to work around this limitation).
 
 ### LEDs
 The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default (so LED do not work unless you close the Jumpers LEDA-GND and LEDB-GND). By setting the 23017 port pins as output, you can blink all the possible LED you wanted to blink.
