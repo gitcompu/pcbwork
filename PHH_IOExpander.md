@@ -54,7 +54,7 @@ So in a Nutshell
 ## I2C address
 There are 3 pins viz A0,A1,A2 using which you can use 8 different I2C addres son which the 23017 can be addresses.
 When all 3 pins are pulled low , the address is 0x20. With A0 pulled high , address is 0x21 .
-On the board all the 3 pins have been pulled high by a pull up resistors hence the I2C address of 23017 will be 0x27. But there are 3 jumpers viz GNDA0, GNDA1 and GNDA2 using which you can selectively pull these 3 pins down to configure the I2C address of 23017.
+On the board all the 3 pins have been pulled high by a pull up resistors hence the I2C address of 23017 will be 0x27. But there are 3 jumpers viz GNDA0, GNDA1 and GNDA2 (@ Middle Right) using which you can selectively pull these 3 pins down to configure the I2C address of 23017.
 
 ## Interrupts
-When 23017 ports are set as INPUT you can configure them to generate interrupts on any logic status changes on any of the port pins. These pins on the board are left disconneted by default but can be routed to the 3V/5V-I2C connector via jumpers INTA and INTB.
+When 23017 ports are set as INPUT you can configure them to generate interrupts on any logic status changes on any of the port pins. These pins on the board are left disconneted by default but can be routed to the 3V/5V-I2C connector via jumpers INTA and INTB (@ Right Bottom).
