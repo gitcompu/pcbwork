@@ -16,7 +16,10 @@ The board is desined so that it can work
 The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default (so LED do not work unless you close the Jumpers LEDA-GND and LEDB-GND). By setting the 23017 port pins as output, you can blink all the possible LED you wanted to blink.
 
 ## Headers GAH/GBH
-The two 8 bit ports are also exposed on two headers GAH and GBH. When the 23017 ports are set as input, since these headers are connected to the IC pins via LEDs , the headers can accept input voltage of more than 3.3 V (reverse biasing the LEDs - note that 23017 ports need to be in input mode with pull up option to work this way). So these  headers are 5V tolerant  when 23017 ports are set as input with pull up option (even when board is operating at 3.3V ). 
+The two 8 bit ports (viz A and B) are also exposed on two headers GAH and GBH. 
+  - **GAH Header** - This header is desinged to primarily work as output (with a protection series resistor - so that if its connected to a external circuit which also want to act as output - the resistor will limit the current). The LED protects if the chip is workgin at 3.3 V and some 5V stuff is applied at the header pin (though even resistor itself could protect - so you can even short the pins of LEDs and still the board will have protection). The board can also work as input but remember to set the port to hugh pullup.
+  - **GBH Header** - Primarily desiged to work as input (no series protection resistors).
+When the 23017 ports are set as input, since these headers are connected to the IC pins via LEDs , the headers can accept input voltage of more than 3.3 V (reverse biasing the LEDs - note that 23017 ports need to be in input mode with pull up option to work this way). So these  headers are 5V tolerant  when 23017 ports are set as input with pull up option (even when board is operating at 3.3V ). 
 
 Note that it can be risky to set the 23017 ports to Output when anything is connected at the headers GAH and GBH. Reason being if the connected external circuit also sets their port as output and 23017 pin is high while external circuit is low , it will damage any or both chips due to huge current flow (if you are sure what you are doign you can opt to set the ports to output).
 
