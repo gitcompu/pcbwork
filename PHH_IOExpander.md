@@ -11,7 +11,7 @@ either Output or Input. Chip MCP23017 is verstile whose ports in input mode can 
 
 ## Usage
 The board is desined so that it can work I/O expander for four different cases
-  - **Expand-1** - As RPiHatHat board that can be connected to RPiHat with 14 pin header **PIHAT-HEADER1** to any of J1, J2 or J3 connectors of RPiHat. This this mode the whole board is working at 3.3 V (Amongst signal pins , only SDA, SDL , and G7 are used. No other signal pins used. 3V is used to power Vcc of board, 5V is conected to Triket M0 header as Vbat and G7 is connected to REST of Trinket M0)
+  - **Expand-1** - As RPiHatHat board that can be connected to RPiHat with 14 pin header **PIHAT-HEADER1** to any of J1 and  J2 ( **not** J3) connectors of RPiHat. This this mode the whole board is working at 3.3 V (Amongst signal pins , only SDA, SDL , and G7 are used. No other signal pins used. 3V is used to power Vcc of board, 5V is conected to Triket M0 header as Vbat and G7 is connected to REST of Trinket M0)
   - **Expand-2** - Board's header **5V/3V I2C** plugins into RPiHatHat header **3V-I2C/SPI-1** or **3V-I2C/SPI-2**  (Board operates at 3.3 V)
   - **Expand-3** - Board's header **5V/3V I2C** plugins into RPiHatHat header **5V-I2C/SPI-1** or **5V-I2C/SPI-2**  (Board operates at 5 V)
   - **Expand-4** - As a I/O expander for any uC that comes with I2C signal (that can be connected to header **5V/3V I2C** ) ( Board operates at volatge supplied by the connector).
@@ -22,10 +22,10 @@ The board is desined so that it can work I/O expander for four different cases
 The board provides a 10 pin header to plug a Adafruit Trinket M0  (which is a SAM21D 32 bit 32K RAM 256K EPROM plus 2M flash and comes preloaded with Circuit Python). The SDA/DSL of the Trinket M0 can be attached to main SDA/SDL via jumpers SW-TMSD/SW-TMSL. The Triket works at 3.3V level and expects the board to be running at 3.3V signal level , so its ok to plugin when board is connected to RPiHat (it draws power from 5V connector so does not require USB connection - you can connect USB if you want). 
 
 When **5V/3V-I2C** header is connected, it is only safe to plug trinket the board only on two conditions
-  - The Vcc of the header is at 3.3V and signals are also at 3.3C
+  - The Vcc of the header is at 3.3V and signals are also at 3.3V
   - The Trinket M0 is powered from USB
 
-Never connect Trinket if **5V/3V-I2C** is connected and operating at 5V signals levels (maybe add a I2C bidireciton convertor to work around this limitation).
+Never connect Trinket if **5V/3V-I2C** is connected and operating at 5V signals levels (maybe add a I2C bidirectional convertor to work around this limitation).
 
 ### LEDs
 The two 8 bit ports drives 16 LEDs . However the ground connection for the LED resistors is open by default for Port B (so LED do not work unless you close the Jumpers LEDB-GND). By setting the 23017 B port pins as output, you can blink all the possible LED you wanted to blink. Regarding port A , all the eonnected LEDS series resistors' tail are routed to pins on header GAH (along with a GND pin). So if you short all the pins of the GBH (or selective pins are connected to ground), you can blink the port A connected LEDs.
